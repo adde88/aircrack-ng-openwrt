@@ -4,12 +4,13 @@ This repo will contain the latest source and installation files for aircrack-ng 
 
 ## Getting Started
 
-Installation (IPK) files can be found within "bin/ar71xx/packages/base" directory.
+Installation (IPK) files can be found within "bin/ar71xx/packages/base" directory.  
 OpenWRT-SDK Makefiles are within "package/net/aircrack-ng/" directory.
 
 ### Prerequisites
 
-The install-files are customized for the WiFi Pineapples, but using the source-files with OpenWRT you can build it for any system.
+The install-files are customized for the WiFi Pineapples  
+But using the Makefile with OpenWRT-SDK you can build it for any system.
 
 
 ### Installing
@@ -20,7 +21,7 @@ Download the IPK and transfer it to your device with your preferred terminal sof
 opkg install aircrack-ng_1.2-rc5-1_ar71xx.ipk
 opkg install aircrack-ng_1.2-rc5-1_ar71xx.ipk --dest sd
 ```
-First line will install aircrack-ng to your local storage.
+First line will install aircrack-ng to your local storage.  
 The second will use your SD-card, preferred if you're using a Pineapple NANO.
 
 
