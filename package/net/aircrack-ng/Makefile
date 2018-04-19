@@ -10,7 +10,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=aircrack-ng
 PKG_VERSION:=1.2-rc5
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 PKG_LICENSE:=GPLv2
 
 PKG_SOURCE_PROTO:=git
@@ -29,7 +29,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/aircrack-ng
   SECTION:=net
   CATEGORY:=Network
-  DEPENDS:=+libpcap +libpthread +libopenssl +libnl +wireless-tools +ethtool +libstdcpp +libpcre
+  DEPENDS:=+libpcap +libpthread +libopenssl +libnl +wireless-tools +ethtool +libstdcpp +libpcre +libgcrypt +libsqlite3
   TITLE:=WLAN tools for breaking 802.11 WEP/WPA keys
   URL:=https://www.aircrack-ng.org/
   MAINTAINER:=Andreas Nilsen <adde88@gmail.com>
@@ -40,13 +40,13 @@ define Package/aircrack-ng/description
   WLAN tools for breaking 802.11 WEP/WPA keys
 endef
 
-MAKE_FLAGS += prefix=/usr \
-	libnl=true \
-	sqlite=true \
-	experimental=true \
-	stackprotector=false \
-	OSNAME=Linux 
-	
+CONFIGURE_ARGS+=  --with-ext-scripts \
+		  --with-gcrypt \
+		  --with-experimental \
+		  --without-opt
+
+MAKE_FLAGS+= 	prefix=/usr \
+		OSNAME=Linux
 
 CFLAGS="$(TARGET_CFLAGS) -Wall -Iinclude/ $(TARGET_CPPFLAGS) -D_REVISION=0" -msse -msse2 -msse3 \
 
