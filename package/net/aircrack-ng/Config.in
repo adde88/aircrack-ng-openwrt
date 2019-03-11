@@ -1,0 +1,38 @@
+if PACKAGE_aircrack-ng
+
+comment "SSL support"
+
+choice
+    prompt "Select SSL library"
+    default AIRCRACK_NG_OPENSSL
+
+    config AIRCRACK_NG_OPENSSL
+        bool "openssl"
+
+    config AIRCRACK_NG_GCRYPT
+        bool "gcrypt"
+endchoice
+
+config AIRCRACK_NG_OPTIMIZE_SPEED
+    bool "Optimize for speed"
+    default y
+    help
+        This enables additional optimization and
+        increases performance considerably at the
+        expense of binary size.
+
+comment "Miscellaneous"
+
+config AIRCRACK_NG_HWLOC
+    bool "Hwloc support"
+    default y
+
+config AIRCRACK_NG_SQLITE3
+    bool "Sqlite3 support"
+    default y
+
+config AIRCRACK_NG_EXPERIMENTAL
+    bool "Compile additional experimental tools"
+    default y
+
+endif
